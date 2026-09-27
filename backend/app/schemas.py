@@ -244,3 +244,27 @@ class TrainingEntry(BaseModel):
     field_5: str | None = None  # 考核成绩
     field_6: str | None = None  # 培训日期
     field_7: str | None = None  # 培训状态
+
+class VideoEntry(BaseModel):
+    """视频点位明细结构。"""
+
+    field_0: str | None = None  # 点位编号
+    field_1: str | None = None  # 所属站点
+    field_2: str | None = None  # 监控画面地址
+    field_3: str | None = None  # 在线状态
+    field_4: str | None = None  # 最近离线时刻
+    field_5: str | None = None  # 离线原因
+    field_6: str | None = None  # 累计离线时长（分钟）
+    field_7: str | None = None  # 点位状态
+
+class VideoInspectionEntry(BaseModel):
+    """录像巡检记录明细结构。"""
+
+    field_0: str | None = None  # 巡检编号
+    field_1: str | None = None  # 点位编号
+    field_2: str | None = None  # 巡检时间
+    field_3: str | None = None  # 巡检结果
+    field_4: str | None = None  # 录像完整率（%）
+    field_5: str | None = None  # 巡检人
+    field_6: str | None = None  # 备注
+    field_7: str | None = None  # 记录状态

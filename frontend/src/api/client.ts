@@ -19,3 +19,19 @@ export async function fetchJson<T>(path: string): Promise<T> {
   }
   return (await response.json()) as T
 }
+
+/** 带重试的读取：接口偶发失败时自动补几次，仍失败就把最后一次错误抛给页面。 */
+export async function fetchJsonWithRetry<T>(path: string, attempts = 3): Promise<T> {
+  let lastError: unknown = new Error('接口请求失败')
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      return await fetchJson<T>(path)
+    } catch (error) {
+      lastError = error
+      if (attempt < attempts - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1)))
+      }
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error('接口请求失败')
+}
