@@ -65,6 +65,30 @@ class ObservationEntry(BaseModel):
     field_6: str | None = None  # 质控标识
     field_7: str | None = None  # 记录状态
 
+class VideoEntry(BaseModel):
+    """视频点位明细结构。"""
+
+    field_0: str | None = None  # 点位编号
+    field_1: str | None = None  # 点位名称
+    field_2: str | None = None  # 所属站点
+    field_3: str | None = None  # 监控画面地址
+    field_4: str | None = None  # 在线状态
+    field_5: str | None = None  # 最近离线时刻
+    field_6: str | None = None  # 离线原因
+    field_7: str | None = None  # 离线时长分钟
+
+class VideoInspectionEntry(BaseModel):
+    """录像巡检记录明细结构。"""
+
+    field_0: str | None = None  # 记录编号
+    field_1: str | None = None  # 点位编号
+    field_2: str | None = None  # 所属站点
+    field_3: str | None = None  # 巡检时刻
+    field_4: str | None = None  # 巡检结果
+    field_5: str | None = None  # 缺失时长分钟
+    field_6: str | None = None  # 巡检人员
+    field_7: str | None = None  # 处理状态
+
 class QualityEntry(BaseModel):
     """质控任务明细结构。"""
 
